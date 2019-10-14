@@ -4,9 +4,7 @@ from BD import BD
 class Menu:
 
     def crearMenu(self):
-        conexion = BD()
-        conexion.conectar()
-
+    
         opc = "a"
         while opc != "s":
 
@@ -15,7 +13,7 @@ class Menu:
 
             if opc.lower() == "a":
                 p = Palabra()
-                p.añadirPalabra(conexion.conectar())
+                p.añadirPalabra()
                 os.system('cls')
 
             elif opc.lower() == "j":    

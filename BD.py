@@ -30,15 +30,19 @@ class BD:
 	def conectar(self):
 		try:
 			conexion = mysql.connector.connect(host="localhost", user="root", passwd="", db="ahorcado_BD")
+			return conexion
 		
 					
 		except Error as e:
 
+
 			print("Error al conectar a MySQL", e)
+			return False
 
 
 		finally:
-			return conexion
+			print("")
+			
 		
 
 
