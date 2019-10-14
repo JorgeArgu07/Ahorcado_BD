@@ -1,6 +1,7 @@
 from random import shuffle
 from Dibujo import Dibujo
-from BD import BD
+import mysql.connector
+from mysql.connector import Error
 import os
 class Palabra:
 
@@ -30,22 +31,30 @@ class Palabra:
 		palabras2.close()
 		self.separarPalabra(palabra)
 
-	def añadirPalabra(self, conexion):
+
+	def añadirPalabra(self):
 		archivoPalabras = open("Palabras_todas.txt", "r+")
 		otra = "s"
 		while otra == "s":
 			palabra = input("Escriba la palabra que desea añadir y presione Enter para agregarla\n")
-
-			if conexion.is_connected():
+			try:
+				conexion = mysql.connector.connect(host="localhost", user="root", passwd="", db="ahorcado_BD")
 				cursor = conexion.cursor()
 				cursor.execute("insert into palabras(palabra) values('"+palabra+"') ")
 				conexion.commit()
 				cursor.close()
-				conexion.close()
-			else:
+				conexion.close()	
 				archivoPalabras.readlines()
 				archivoPalabras.write("\n"+palabra.lower())
-			otra = input("¿Desea añadir otra palabra?(s/n)")
+	
+			except Error as e:
+				archivoPalabras.readlines()
+				archivoPalabras.write("\n"+palabra.lower())
+				print("Error al conectar a MySQL", e)
+
+			finally:
+				print("Palabra añadida")
+			otra = input ("¿Desea añadir otra palabra?(s/n)")
 
 		archivoPalabras.close()
 
@@ -73,18 +82,19 @@ class Palabra:
 		
 
 	def compararPalabra(self, palabraTapada, palabraDestapada):
+		os.system('cls')
 		palabra = self.concatLista(palabraDestapada)
 		intentos = 5
 		ganador = True
 
+		dibujo = Dibujo()
+		actual = dibujo.dibujarHorca()
+
 		while self.concatLista(palabraTapada) != self.concatLista(palabraDestapada):
 
-			os.system('cls')
-			print(self.concatLista(palabraDestapada))
+			actual
 
-			dibujo = Dibujo()
-
-			dibujo.dibujarHorca()
+			print(self.concatLista(palabraDestapada))			
 			print(self.concatLista(palabraTapada))
 			print("Tienes "+str(intentos)+" intentos")
 			letraIngresada = input("Escribe una letra o una palabra\n")
@@ -98,22 +108,31 @@ class Palabra:
 					#enumerate(palabraTapada)
 					for p in posiciones:
 						palabraTapada[p] = letraIngresada
+					os.system('cls')
+					actual
 					print("Acertaste!")
+
+
 				else:
 					intentos -= 1
 					if intentos == 4:
-						dibujo.dibujarCabeza()
-						print(palabraTapada)
+						os.system('cls')
+						actual = dibujo.dibujarCabeza()
+						#print(palabraTapada)
 					elif intentos == 3:
-						dibujo.dibujarBrazo1()
-						print(palabraTapada)
+						os.system('cls')
+						actual = dibujo.dibujarBrazo1()
+						#print(palabraTapada)
 					elif intentos == 2:
-						dibujo.dibujarBrazo2()
-						print(palabraTapada)
+						os.system('cls')
+						actual = dibujo.dibujarBrazo2()
+						#print(palabraTapada)
 					elif intentos == 1:
-						dibujo.dibujarPierna1()
-						print(palabraTapada)
+						os.system('cls')
+						actual = dibujo.dibujarPierna1()
+						#print(palabraTapada)
 					elif intentos == 0:
+						os.system('cls')
 						palabraTapada = palabraDestapada
 						ganador = False
 
