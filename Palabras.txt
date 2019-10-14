@@ -13,4 +13,3 @@ galleta
 piso
 mesa
 mochila
-
