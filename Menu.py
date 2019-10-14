@@ -1,8 +1,11 @@
 from Palabra import Palabra
 import os
+from BD import BD
 class Menu:
 
     def crearMenu(self):
+        conexion = BD()
+        conexion.conectar()
 
         opc = "a"
         while opc != "s":
@@ -12,7 +15,7 @@ class Menu:
 
             if opc.lower() == "a":
                 p = Palabra()
-                p.añadirPalabra()
+                p.añadirPalabra(conexion.conectar())
                 os.system('cls')
 
             elif opc.lower() == "j":    
