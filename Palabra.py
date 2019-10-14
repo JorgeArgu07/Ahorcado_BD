@@ -5,7 +5,20 @@ from mysql.connector import Error
 import os
 class Palabra:
 
-	def getPalabra(self):
+	def getpalabrasarchivo(self):
+		palabras = [line.rstrip() for line in open("Palabras.txt")]
+		if len(palabras) == 0:
+			self.obtenerPalabras()
+			palabras = [line.rstrip() for line in open("Palabras.txt")]
+		shuffle(palabras)
+		return palabras
+
+	def getPalabra(self, conexion):
+
+		if conexion.is_connected:
+			palabrasbd=[]
+
+
 		palabras=[line.rstrip() for line in open("Palabras.txt")]
 		if len(palabras) == 0:
 			self.obtenerPalabras()
@@ -20,7 +33,6 @@ class Palabra:
 
 
 	def añadirPalabra(self):
-
 		archivoPalabras = open("Palabras_todas.txt", "r+")
 		otra = "s"
 		while otra == "s":
@@ -42,7 +54,6 @@ class Palabra:
 
 			finally:
 				print("Palabra añadida")
-
 			otra = input ("¿Desea añadir otra palabra?(s/n)")
 
 		archivoPalabras.close()
@@ -71,7 +82,6 @@ class Palabra:
 		
 
 	def compararPalabra(self, palabraTapada, palabraDestapada):
-
 		os.system('cls')
 		palabra = self.concatLista(palabraDestapada)
 		intentos = 5

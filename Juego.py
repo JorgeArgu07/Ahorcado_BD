@@ -4,5 +4,3 @@ class Juego:
 	def Iniciar(self):
 		menu = Menu()
 		menu.crearMenu()
-
-

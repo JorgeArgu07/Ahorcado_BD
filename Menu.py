@@ -3,6 +3,7 @@ import os
 from BD import BD
 class Menu:
 
+
     def crearMenu(self):
     
         opc = "a"
@@ -31,22 +32,3 @@ class Menu:
 
             else:
                 print("Tecla incorrecta. Vuelve a intentarlo.")
-
-            
-
-
-            
-        
-
-
-
-
-
-            
-
-
-
-
-
-
-
