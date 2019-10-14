@@ -4,7 +4,20 @@ from BD import BD
 import os
 class Palabra:
 
-	def getPalabra(self):
+	def getpalabrasarchivo(self):
+		palabras = [line.rstrip() for line in open("Palabras.txt")]
+		if len(palabras) == 0:
+			self.obtenerPalabras()
+			palabras = [line.rstrip() for line in open("Palabras.txt")]
+		shuffle(palabras)
+		return palabras
+
+	def getPalabra(self, conexion):
+
+		if conexion.is_connected:
+			palabrasbd=[]
+
+
 		palabras=[line.rstrip() for line in open("Palabras.txt")]
 		if len(palabras) == 0:
 			self.obtenerPalabras()
@@ -17,9 +30,7 @@ class Palabra:
 		palabras2.close()
 		self.separarPalabra(palabra)
 
-
 	def añadirPalabra(self, conexion):
-
 		archivoPalabras = open("Palabras_todas.txt", "r+")
 		otra = "s"
 		while otra == "s":
@@ -34,7 +45,7 @@ class Palabra:
 			else:
 				archivoPalabras.readlines()
 				archivoPalabras.write("\n"+palabra.lower())
-			otra = input ("¿Desea añadir otra palabra?(s/n)")
+			otra = input("¿Desea añadir otra palabra?(s/n)")
 
 		archivoPalabras.close()
 
@@ -62,8 +73,6 @@ class Palabra:
 		
 
 	def compararPalabra(self, palabraTapada, palabraDestapada):
-
-
 		palabra = self.concatLista(palabraDestapada)
 		intentos = 5
 		ganador = True
