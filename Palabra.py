@@ -1,5 +1,6 @@
 from random import shuffle
 from Dibujo import Dibujo
+from BD import BD
 import os
 class Palabra:
 
@@ -16,14 +17,25 @@ class Palabra:
 		palabras2.close()
 		self.separarPalabra(palabra)
 
-	def añadirPalabra(self):
+
+	def añadirPalabra(self, conexion):
+
 		archivoPalabras = open("Palabras_todas.txt", "r+")
 		otra = "s"
 		while otra == "s":
 			palabra = input("Escriba la palabra que desea añadir y presione Enter para agregarla\n")
-			archivoPalabras.readlines()
-			archivoPalabras.write("\n"+palabra.lower())
+
+			if conexion.is_connected():
+				cursor = conexion.cursor()
+				cursor.execute("insert into palabras(palabra) values('"+palabra+"') ")
+				conexion.commit()
+				cursor.close()
+				conexion.close()
+			else:
+				archivoPalabras.readlines()
+				archivoPalabras.write("\n"+palabra.lower())
 			otra = input ("¿Desea añadir otra palabra?(s/n)")
+
 		archivoPalabras.close()
 
 
