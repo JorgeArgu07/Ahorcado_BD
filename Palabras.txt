@@ -1,3 +1,4 @@
+
 tenis
 escalera
 computadora
@@ -12,3 +13,4 @@ galleta
 piso
 mesa
 mochila
+
