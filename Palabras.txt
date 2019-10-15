@@ -15,4 +15,7 @@ teclado
 tenis
 cable
 galleta
-hola
+piso
+mesa
+mochila
+

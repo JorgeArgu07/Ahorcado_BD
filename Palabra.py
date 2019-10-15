@@ -136,7 +136,7 @@ class Palabra:
 						os.system('cls')
 						actual = dibujo.dibujarCabeza()
 						#print(palabraTapada)
-					elif intentos == 3:
+					elif intentos == 3:	
 						os.system('cls')
 						actual = dibujo.dibujarBrazo1()
 						#print(palabraTapada)
