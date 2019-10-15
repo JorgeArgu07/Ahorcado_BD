@@ -10,9 +10,6 @@ class Menu:
         opc = "a"
         while opc != "s":
             if conexion == 1:
-                                                                # CON CONEXIÓN
-# ==================================================================================================================================================
-
                 opc = input("Bienvenido ¿Que deseas hacer? \n <J> = Jugar || <A> = Añadir Palabra || <R> Reiniciar Palabras || <S> Salir ")
                 if opc.lower() == "a":
                     p = Palabra()
@@ -59,3 +56,7 @@ class Menu:
 
                 else:
                     print("Tecla incorrecta. Vuelve a intentarlo.")
+
+
+menu = Menu()
+menu.crearMenu()
