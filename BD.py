@@ -1,55 +1,88 @@
 import mysql.connector
-import Palabra
 from mysql.connector import Error
 
 
 class BD:
 
-    def getpalabras(self):
-        palabras=[]
-        try:
-            conexion=mysql.connector.connect(host="localhost", user="root", passwd="", db="ahorcado_BD")
-            if conexion.is_connected():
-                cursor = conexion.cursor()
-                cursor.execute("select * from Palabras")
-                consulta = cursor.fetchall()
-                for row in consulta:
-                    palabras.append(row[1])
-        except Error as e:
-            print("Error al conectar a MySQL", e)
-        finally:
-            if conexion.is_connected():
-                cursor.close()
-                conexion.close()
-                print("La conexion a MySQL se ha cerrado")
-        return palabras
-
-    def conectar(self):
+    def llenarbd(self, palabras):
+        success = 0
+        er = ""
+        eliminarbd = "truncate table ahorcado_bd.palabras;"
         try:
             conexion = mysql.connector.connect(host="localhost", user="root", passwd="", db="ahorcado_BD")
-            if conexion.is_connected():
-                # info = conexion.get_server_info()
-                # print("Conectado a la version de MySQL: ", info)
-                cursor = conexion.cursor()
-                # cursor.execute("select database();")
-                # record = cursor.fetchone()
-                # print("Conectado a la base de datos: ", record)
-                # cursor.execute("select * from Jugadores")
-                # consulta = cursor.fetchall()
-                # for row in consulta:
-                #     print("Id: ", row[0])
-                #     print("Nombre: ", row[1])
-                #     print("Puntuacion: ", row[2])
-        except Error as e:
-            print("Error al conectar a MySQL", e)
+            cursor = conexion.cursor()
+            cursor.execute(eliminarbd)
+            for palabra in palabras:
+                query = "insert into palabras (palabra) values('"+palabra+"')"
+                cursor.execute(query)
+                conexion.commit()
+            cursor.close()
+            success = 1
+        except Error as error:
+            er = error
+            success = 0
 
         finally:
-            if conexion.is_connected():
-                cursor.close()
-                conexion.close()
-                print("La conexion a MySQL se ha cerrado")
+            return success
+
+    def agregarpalabra(self, palabra):
+        success = 0
+        er = ""
+        try:
+            conexion = mysql.connector.connect(host="localhost", user="root", passwd="", db="ahorcado_BD")
+            query = "insert into palabras (palabra) values('" + palabra + "')"
+            cursor = conexion.cursor()
+            cursor.execute(query)
+            conexion.commit()
+            cursor.close()
+            success = 1
+
+        except Error as error:
+            er = error
+            success = 0
+        finally:
+            if success != 1:
+                return er
+            else:
+                return success
+
+    def getpalabras(self):
+        palabras = []
+        success = 0
+        er = ""
+        try:
+            conexion=mysql.connector.connect(host="localhost", user="root", passwd="", db="ahorcado_BD")
+            cursor = conexion.cursor()
+            cursor.execute("select * from palabras")
+            consulta = cursor.fetchall()
+            for row in consulta:
+                palabras.append(row[1])
+            success = 1
+        except Error as e:
+            success = 0
+            er = e
+        finally:
+            if success == 1:
+                return palabras
+            else:
+                print("Ocurrió un error: {}".format(er))
+
+    def conectar(self):
+        success = 0
+        er = ""
+        try:
+            conexion = mysql.connector.connect(host="localhost", user="root", passwd="", db="ahorcado_BD")
+            success = 1
+        except Error as error:
+            er = error
+            success = 0
+        finally:
+            if success != 1:
+                return er
+            else:
+                return success
 
 
-bd = BD()
-bd.conectar()
+# bd = BD()
+# bd.getpalabras()
 

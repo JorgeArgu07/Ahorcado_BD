@@ -15,5 +15,5 @@ teclado
 tenis
 cable
 galleta
-
-galleta
+hola
+uva
