@@ -37,6 +37,7 @@ class Palabra:
 		if len(palabras) == 0:
 			print("No se encontraron palabras")
 			self.agregarpalabradb()
+			palabras = [line.rstrip() for line in open("Palabras_todas.txt")]
 		conexion.llenarbd(palabras)
 		palabras2 = open("Palabras.txt", "w")
 		nuevaLista = "\n".join(str(x) for x in palabras)
@@ -52,7 +53,7 @@ class Palabra:
 			self.reiniciarpalabrasbd()
 		shuffle(palabras)
 		palabra = palabras.pop()
-		conexion.llenarbd(palabras)
+		conexion.cambiarvalidacion(palabra)
 		palabras2 = open("Palabras.txt", "w")
 		nuevaLista = "\n".join(str(x) for x in palabras)
 		palabras2.write(nuevaLista)
@@ -177,9 +178,6 @@ class Palabra:
 		for l in lista:
 			palabra+= l
 		return palabra
-
-
-
 
 
 

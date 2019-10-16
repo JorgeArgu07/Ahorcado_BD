@@ -7,7 +7,7 @@ class Menu:
     def crearMenu(self):
         p = Palabra()
         conexion = p.llenarbasedatos()
-        opc = "a"
+        opc = "a"   
         while opc != "s":
             if conexion == 1:
                 opc = input("Bienvenido ¿Que deseas hacer? \n <J> = Jugar || <A> = Añadir Palabra || <R> Reiniciar Palabras || <S> Salir ")
