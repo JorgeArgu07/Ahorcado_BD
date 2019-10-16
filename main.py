@@ -7,7 +7,7 @@ class Menu:
     def crearMenu(self):
         p = Palabra()
         conexion = p.llenarbasedatos()
-        opc = "a"
+        opc = "a"   
         while opc != "s":
             if conexion == 1:
                                                                 # CON CONEXIÓN
@@ -60,3 +60,7 @@ class Menu:
 
                 else:
                     print("Tecla incorrecta. Vuelve a intentarlo.")
+
+
+menu = Menu()
+menu.crearMenu()

@@ -4,3 +4,4 @@ programacion
 computacion
 galleta
 escalera
+mesa

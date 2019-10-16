@@ -4,3 +4,5 @@ programacion
 computacion
 galleta
 escalera
+mesa
+laptop
