@@ -12,7 +12,8 @@ class Menu:
             if conexion == 1:
                                                                 # CON CONEXIÓN
 # ==================================================================================================================================================
-
+                os.system('cls')
+                print("¡Estás jugando con conexión!")
                 opc = input("Bienvenido ¿Que deseas hacer? \n <J> = Jugar || <A> = Añadir Palabra || <R> Reiniciar Palabras || <S> Salir ")
                 if opc.lower() == "a":
                     p = Palabra()
