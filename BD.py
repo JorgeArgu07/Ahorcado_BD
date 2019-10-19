@@ -89,12 +89,13 @@ class BD:
         er = ""
         try:
             conexion = mysql.connector.connect(host="localhost", user="root", passwd="", db="ahorcado_BD")
-            query = "update ahorcado_bd.palabras set validacion=1 where id='"+identificador+"'"
+            query = "update ahorcado_bd.palabras set validacion=1 where id="+identificador
             cursor = conexion.cursor()
             cursor.execute(query)
+            cursor.commit()
             success = 1
         except Error as error:
-            print("hola", success, er)
+            print("hola", success, error)
             success = 0
         finally:
             if success != 1:
@@ -125,8 +126,3 @@ class BD:
                 return er
             else:
                 return success
-
-
-bd = BD()
-bd.cambiarvalidacion2(7)
-
