@@ -1,3 +1,4 @@
+@ -1,66 +0,0 @@
 from Palabra import Palabra
 from BD import BD
 import os
