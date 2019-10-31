@@ -15,34 +15,30 @@ class Palabra:
         success = conexion.llenarbd(palabras)
         return success
 
-    def agregarpalabradb(self):
+    def agregarpalabradb(self, palabra):
         conexion = BD()
         archivopalabras = open("Palabras_todas.txt", "r+")
-        otra = "s"
-        while otra == "s":
-            palabra = input("Escriba la palabra que desea añadir y presione Enter para agregarla\n")
-            success = conexion.agregarpalabra(palabra)
-            archivopalabras.readlines()
-            archivopalabras.write("\n" + palabra.lower())
-            if success == 1:
-                print("Palabra añadida")
-            else:
-                print("Ocurrió un error: {}".format(success))
-            otra = input("¿Desea añadir otra palabra?(s/n)")
+        success = conexion.agregarpalabra(palabra)
+        archivopalabras.readlines()
+        archivopalabras.write("\n" + palabra.lower())
+        if success == 1:
+            return 1
+        else:
+            return success
         archivopalabras.close()
 
     def reiniciarpalabrasbd(self):
             conexion = BD()
             palabras = [line.rstrip() for line in open("Palabras_todas.txt")]
             if len(palabras) == 0:
-                print("No se encontraron palabras")
-                self.agregarpalabradb()
+                return 0
                 palabras = [line.rstrip() for line in open("Palabras_todas.txt")]
             conexion.reiniciarusadas()
             palabras2 = open("Palabras.txt", "w")
             nuevaLista = "\n".join(str(x) for x in palabras)
             palabras2.write(nuevaLista)
             palabras2.close()
+            return 1
 
     def getpalabrabd(self):
             palabras = []
@@ -65,7 +61,7 @@ class Palabra:
     def getPalabra(self):
         palabras=[line.rstrip() for line in open("Palabras.txt")]
         if len(palabras) == 0:
-            self.obtenerPalabras()
+            return 0
             palabras=[line.rstrip() for line in open("Palabras.txt")]
         shuffle(palabras)
         palabra = palabras.pop()
@@ -74,30 +70,27 @@ class Palabra:
         palabras2.write(nuevaLista)
         palabras2.close()
         self.separarPalabra(palabra)
+        return 1
 
 
-    def añadirPalabra(self):
+    def añadirPalabra(self,palabra):
         archivoPalabras = open("Palabras_todas.txt", "r+")
-        otra = "s"
-        while otra == "s":
-            os.system('cls')
-            palabra = input("Escriba la palabra que desea añadir y presione Enter para agregarla\n")
-            archivoPalabras.readlines()
-            archivoPalabras.write("\n"+palabra.lower())
-            print("Palabra añadida")
-            otra = input("¿Desea añadir otra palabra?(s/n)")
+        os.system('cls')
+        archivoPalabras.readlines()
+        archivoPalabras.write("\n"+palabra.lower())
         archivoPalabras.close()
+        return 1
 
 
     def obtenerPalabras(self):
         palabras = [line.rstrip() for line in open("Palabras_todas.txt")]
         if len(palabras) == 0:
-            print("No se encontraron palabras")
-            self.añadirPalabra()
+            return 0
         palabras2 = open("Palabras.txt", "w")
         nuevaLista = "\n".join(str(x) for x in palabras)
         palabras2.write(nuevaLista)
         palabras2.close()
+        return 1
 
     def separarPalabra(self, palabra):
         palabraDestapada = list(palabra)
@@ -180,5 +173,5 @@ class Palabra:
         return palabra
 
 
-pa=Palabra()
-pa.getpalabrabd()
+""" pa=Palabra()
+pa.getpalabrabd() """

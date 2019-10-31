@@ -1,7 +1,2 @@
-trabajo
-escuela
-programacion
-computacion
-galleta
-escalera
-mesa
+escritorio
+computadora

@@ -63,7 +63,6 @@ class BD:
         except Error as error:
             success = 0
             er = error
-            print("hola", er)
         finally:
             if success != 1:
                 return er
@@ -92,7 +91,7 @@ class BD:
             if success == 1:
                 return palabras
             else:
-                print("Ocurrió un error: {}".format(er))
+                return er
 
     def validacionaux(self, identificador):
         success = 0
