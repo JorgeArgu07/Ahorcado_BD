@@ -1,4 +1,5 @@
 from Palabra import Palabra
+from Jugador import Jugador
 from BD import BD
 import os
 class Menu:
@@ -29,6 +30,13 @@ class Menu:
                     os.system('cls')
 
                 elif opc.lower() == "j":
+                    """  jugador=Jugador()
+                        nojugador=0
+                        for jugador in jugador.getnombresjugadores():
+                            print(str(nojugador)+")"+jugador)
+                            nojugador = nojugador + 1
+                        print("n)Ninguno de los anteriores")
+                        opcjugador=input("¿Qué jugador eres?") """
                     p = Palabra()
                     p.getpalabrabd()
 

@@ -110,14 +110,12 @@ class Palabra:
         palabra = self.concatLista(palabraDestapada)
         intentos = 5
         ganador = True
-
         dibujo = Dibujo()
         actual = dibujo.dibujarHorca()
 
         while self.concatLista(palabraTapada) != self.concatLista(palabraDestapada):
 
             actual
-
             print(self.concatLista(palabraDestapada))
             print(self.concatLista(palabraTapada))
             print("Tienes "+str(intentos)+" intentos")
