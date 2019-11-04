@@ -20,25 +20,36 @@ class Menu:
                     p = Palabra()
                     opcion='s'
                     while opcion=='s':
+                        os.system('cls')
                         palabra = input("Escribe la palabra que deseas añadir y presiona Enter para agregarla\n")
                         success=p.agregarpalabradb(palabra)
                         if success==1:
                             print("Registro exitoso")
                         else:
                             print("Ocurrió un error inténtalo de nuevo "+success)
-                        opcion=input("¿Deseas agregar otra palabra? <S><N>").lower()
+                        opcion=input("¿Deseas agregar otra palabra? <S> Si || <N> No\n").lower()
                     os.system('cls')
 
                 elif opc.lower() == "j":
-                    """  jugador=Jugador()
-                        nojugador=0
-                        for jugador in jugador.getnombresjugadores():
-                            print(str(nojugador)+")"+jugador)
-                            nojugador = nojugador + 1
-                        print("n)Ninguno de los anteriores")
-                        opcjugador=input("¿Qué jugador eres?") """
                     p = Palabra()
-                    p.getpalabrabd()
+                    success = p.getpalabrabd()
+                    if success==0:
+                        success2=p.reiniciarpalabrasbd()
+                        if success2==0:
+                            input("Lista de palabras vacía, presione enter para agregar más palabras")
+                            otra='s'
+                            while otra=='s':
+                                os.system('cls')
+                                palabra = input("Escribe la palabra que deseas añadir y presiona Enter para agregarla\n")
+                                success3=p.agregarpalabradb(palabra)
+                                if success3==1:
+                                    print("Palabra añadida exitosamente.")
+                                else:
+                                    print("Ocurrió un error inténtelo de nuevo.")
+                                otra=input("¿Deseas agregar otra palabra? <S> Si || <N> No\n").lower()
+                    else:
+                        palabratyd=p.separarPalabra(success)
+                        p.compararPalabra(palabratyd[1],palabratyd[0])
 
                 elif opc.lower() == "s":
                     print("Hasta pronto.")
@@ -51,14 +62,15 @@ class Menu:
                         os.system('cls')
                         opcion='s'
                         while opcion=='s':
+                            os.system('cls')
                             palabra = input("Escribe la palabra que deseas añadir y presiona Enter para agregarla\n")
                             success=p.agregarpalabradb(palabra)
                             if success==1:
                                 print("Registro exitoso")
                             else:
                                 print("Ocurrió un error inténtalo de nuevo "+success)
-                            opcion=input("¿Deseas agregar otra palabra? <S><N>").lower()
-                    print("Lista de palabras reiniciada.")
+                            opcion=input("¿Deseas agregar otra palabra? <S> Si || <N> No\n").lower()
+                    input("Lista de palabras reiniciada. \nPresiona enter para continuar")
 
                 else:
                     print("Tecla incorrecta. Vuelve a intentarlo.")
@@ -78,7 +90,7 @@ class Menu:
                             print("Palabra añadida exitosamente.")
                         else:
                             print("Ocurrió un error inténtelo de nuevo.")
-                        otra=input("¿Deseas agregar otra palabra? <S><N>").lower()
+                        otra=input("¿Deseas agregar otra palabra? <S> Si || <N> No\n").lower()
                     os.system('cls')
 
                 elif opc.lower() == "j":
@@ -97,7 +109,10 @@ class Menu:
                                     print("Palabra añadida exitosamente.")
                                 else:
                                     print("Ocurrió un error inténtelo de nuevo.")
-                                otra=input("¿Deseas agregar otra palabra? <S><N>").lower()
+                                otra=input("¿Deseas agregar otra palabra? <S> Si || <N> No\n").lower()
+                    else:
+                        palabratyd=p.separarPalabra(success)
+                        p.compararPalabra(palabratyd[1],palabratyd[0])
 
                 elif opc.lower() == "s":
                     print("Hasta pronto.")
@@ -109,15 +124,15 @@ class Menu:
                         input("Lista de palabras vacía, presione enter para agregar más palabras")
                         os.system('cls')
                         otra='s'
-                        while otra=='s':
+                        while otra == 's':
                             os.system('cls')
                             palabra = input("Escribe la palabra que deseas añadir y presiona Enter para agregarla\n")
-                            success=p.añadirPalabra(palabra)
-                            if success==1:
+                            success = p.añadirPalabra(palabra)
+                            if success == 1:
                                 print("Palabra añadida exitosamente.")
                             else:
                                 print("Ocurrió un error inténtelo de nuevo.")
-                            otra=input("¿Deseas agregar otra palabra? <S><N>").lower()
+                            otra = input("¿Deseas agregar otra palabra? <S> Si || <N> No\n").lower()
 
                     print("Lista de palabras reiniciada.")
 

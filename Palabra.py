@@ -32,7 +32,6 @@ class Palabra:
             palabras = [line.rstrip() for line in open("Palabras_todas.txt")]
             if len(palabras) == 0:
                 return 0
-                palabras = [line.rstrip() for line in open("Palabras_todas.txt")]
             conexion.reiniciarusadas()
             palabras2 = open("Palabras.txt", "w")
             nuevaLista = "\n".join(str(x) for x in palabras)
@@ -46,7 +45,8 @@ class Palabra:
             for palabra in conexion.getpalabras():
                 palabras.append(palabra)
             if len(palabras) == 0:
-                self.reiniciarpalabrasbd()
+                if self.reiniciarpalabrasbd()==0:
+                    return 0
                 for palabra in conexion.getpalabras():
                     palabras.append(palabra)
             shuffle(palabras)
@@ -56,21 +56,19 @@ class Palabra:
             nuevaLista = "\n".join(str(x) for x in palabras)
             palabras2.write(nuevaLista)
             palabras2.close()
-            self.separarPalabra(palabra)
+            return palabra
 
     def getPalabra(self):
         palabras=[line.rstrip() for line in open("Palabras.txt")]
         if len(palabras) == 0:
             return 0
-            palabras=[line.rstrip() for line in open("Palabras.txt")]
         shuffle(palabras)
         palabra = palabras.pop()
         palabras2 = open("Palabras.txt", "w")
         nuevaLista = "\n".join(str(x) for x in palabras)
         palabras2.write(nuevaLista)
         palabras2.close()
-        self.separarPalabra(palabra)
-        return 1
+        return palabra
 
 
     def añadirPalabra(self,palabra):
@@ -95,14 +93,14 @@ class Palabra:
     def separarPalabra(self, palabra):
         palabraDestapada = list(palabra)
         palabraTapada = []
+        output=[]
 
         for letra in palabraDestapada:
             palabraTapada.append(" _")
 
-
-        self.compararPalabra(palabraTapada, palabraDestapada)
-
-
+        output.append(palabraDestapada)
+        output.append(palabraTapada)
+        return output
 
     def compararPalabra(self, palabraTapada, palabraDestapada):
 
@@ -132,8 +130,6 @@ class Palabra:
                         palabraTapada[p] = letraIngresada
                     os.system('cls')
                     print("Acertaste!")
-
-
                 else:
                     intentos -= 1
                     if intentos == 4:
@@ -156,20 +152,13 @@ class Palabra:
                         os.system('cls')
                         palabraTapada = palabraDestapada
                         ganador = False
-
-
         if ganador:
-            print("Adivinaste la palabra. Ganaste!")
+            os.system('cls')
+            input("Adivinaste la palabra. Ganaste!\nPresiona enter para continuar")
         else:
             dibujo.dibujarPierna2()
-
-
     def concatLista(self, lista):
         palabra = ""
         for l in lista:
             palabra+= l
         return palabra
-
-
-""" pa=Palabra()
-pa.getpalabrabd() """
