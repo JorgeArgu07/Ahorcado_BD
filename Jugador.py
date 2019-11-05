@@ -103,6 +103,6 @@ class Jugador:
         archivojugadores.write(var)
         archivojugadores.close()
         return 1      
-
+""" 
 Ju=Jugador()
-Ju.sumarpunto("bianca")
+Ju.sumarpunto("bianca") """
