@@ -73,7 +73,6 @@ class Palabra:
 
     def añadirPalabra(self,palabra):
         archivoPalabras = open("Palabras_todas.txt", "r+")
-        os.system('cls')
         archivoPalabras.readlines()
         archivoPalabras.write("\n"+palabra.lower())
         archivoPalabras.close()
