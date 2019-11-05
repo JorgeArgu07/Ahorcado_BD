@@ -102,61 +102,9 @@ class Palabra:
         output.append(palabraTapada)
         return output
 
-    def compararPalabra(self, palabraTapada, palabraDestapada):
+    # def compararPalabra(self, palabraTapada, palabraDestapada):
 
-        os.system('cls')
-        palabra = self.concatLista(palabraDestapada)
-        intentos = 5
-        ganador = True
-        dibujo = Dibujo()
-        actual = dibujo.dibujarHorca()
 
-        while self.concatLista(palabraTapada) != self.concatLista(palabraDestapada):
-
-            actual
-            print(self.concatLista(palabraDestapada))
-            print(self.concatLista(palabraTapada))
-            print("Tienes "+str(intentos)+" intentos")
-            letraIngresada = input("Escribe una letra o una palabra\n")
-            letraIngresada.lower()
-
-            if letraIngresada == palabra:
-                palabraTapada = palabra
-            else:
-                posiciones = [i for i,l in enumerate(palabraDestapada) if l == letraIngresada]
-                if len(posiciones) > 0 :
-                    #enumerate(palabraTapada)
-                    for p in posiciones:
-                        palabraTapada[p] = letraIngresada
-                    os.system('cls')
-                    print("Acertaste!")
-                else:
-                    intentos -= 1
-                    if intentos == 4:
-                        os.system('cls')
-                        actual = dibujo.dibujarCabeza()
-                        #print(palabraTapada)
-                    elif intentos == 3:
-                        os.system('cls')
-                        actual = dibujo.dibujarBrazo1()
-                        #print(palabraTapada)
-                    elif intentos == 2:
-                        os.system('cls')
-                        actual = dibujo.dibujarBrazo2()
-                        #print(palabraTapada)
-                    elif intentos == 1:
-                        os.system('cls')
-                        actual = dibujo.dibujarPierna1()
-                        #print(palabraTapada)
-                    elif intentos == 0:
-                        os.system('cls')
-                        palabraTapada = palabraDestapada
-                        ganador = False
-        if ganador:
-            os.system('cls')
-            input("Adivinaste la palabra. Ganaste!\nPresiona enter para continuar")
-        else:
-            dibujo.dibujarPierna2()
     def concatLista(self, lista):
         palabra = ""
         for l in lista:
