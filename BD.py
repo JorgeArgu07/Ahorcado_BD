@@ -114,11 +114,25 @@ class BD:
         query="insert into jugadores (idjugador) values('"+nombre+"')"
         success=self.execquery(query)
         return success
-        
+
     def sumarpuntos(self, jugador):
-        query = "UPDATE jugadores SET puntaje = puntaje+1 WHERE idjugador ={}".format(jugador)
+        query = "UPDATE jugadores SET puntaje = puntaje+1 WHERE idjugador='"+jugador+"';"
         success=self.execquery(query)
         return success
 
+    def getjugadoresyp(self):
+        query="select * from jugadores"
+        jugadores=[]
+        var=""
+        if len(self.getselect(query))==0:
+            return 0
+        else:
+            jugadores = list(self.getselect(query))
+
+            for row in range(len(jugadores)):
+                var+=jugadores[row][0]+"\t"+str(jugadores[row][1])+"\n"
+        return var
+
+
 """ base=BD()
-base.verifypuntosjugador("e") """
+base.getjugadoresyp() """

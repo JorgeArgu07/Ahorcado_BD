@@ -80,6 +80,7 @@ class Menu:
                     os.system('cls')
 
                 elif opc.lower() == "j":
+                    os.system('cls')
                     p = Palabra()
                     success = p.getpalabrabd()
                     if success==0:
@@ -150,7 +151,7 @@ class Menu:
                                         ganador = False
                         if ganador:
                             os.system('cls')
-                            j.sumarpunto(jugador)
+                            j.sumarpuntobd(jugador)
                             input("Adivinaste la palabra. Ganaste!\nPresiona enter para continuar")
                         else:
                             print(dibujo.dibujarPierna2())
@@ -159,6 +160,7 @@ class Menu:
                     print("Hasta pronto.")
 
                 elif opc.lower() == "r":
+                    os.system('cls')
                     p = Palabra()
                     success=p.reiniciarpalabrasbd()
                     if success==0:
@@ -175,7 +177,11 @@ class Menu:
                                 print("Ocurrió un error inténtalo de nuevo "+success)
                             opcion=input("¿Deseas agregar otra palabra? <S> Si || <N> No\n").lower()
                     input("Lista de palabras reiniciada. \nPresiona enter para continuar")
-
+                elif opc.lower()=="v":
+                    os.system('cls')
+                    print("Jugador\t|Puntos\n")
+                    print(j.getjugadoresypbd())
+                    input("Presiona Enter para regresar.")
                 else:
                     print("Tecla incorrecta. Vuelve a intentarlo.")
 
@@ -199,6 +205,7 @@ class Menu:
                     os.system('cls')
 
                 elif opc.lower() == "j":
+                    os.system('cls')
                     p = Palabra()
                     success=p.getPalabra()
                     if success==0:
@@ -278,6 +285,7 @@ class Menu:
                     print("Hasta pronto.")
 
                 elif opc.lower() == "r":
+                    os.system('cls')
                     p = Palabra()
                     success=p.obtenerPalabras()
                     if success==0:
@@ -297,6 +305,7 @@ class Menu:
                     print("Lista de palabras reiniciada.")
                 elif opc.lower()=="v":
                     os.system('cls')
+                    print("Jugador\t|Puntos\n")
                     print(j.getjugadoresyp())
                     input("Presiona Enter para regresar.")
 
@@ -305,4 +314,4 @@ class Menu:
 
 
 menu = Menu()
-menu.crearMenu(0)
+menu.crearMenu(1)

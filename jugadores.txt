@@ -1,3 +1,6 @@
 eduardo	5
 jorge	3
 bianca	2
+eduardo	5
+jorge	3
+bianca	3

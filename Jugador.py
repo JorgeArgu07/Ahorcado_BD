@@ -19,7 +19,7 @@ class Jugador:
         conexion=BD()
         return conexion.verifyjugador(jugador)
 
-    def sumarpunto(self,jugador):
+    def sumarpuntobd(self,jugador):
         conexion=BD()
         return conexion.sumarpuntos(jugador)
 
@@ -70,6 +70,7 @@ class Jugador:
             jugadoryp.append(jugadores[jugador].split())
         for jugador in range(len(jugadoryp)):
             var+=jugadoryp[jugador][0]+"\t"+jugadoryp[jugador][1]+"\n"
+        print(jugadoryp[0])
         return var
 
     def agregarjugador(self, jugador):
@@ -77,7 +78,31 @@ class Jugador:
         archivojugadores.readlines()
         archivojugadores.write("\n"+jugador.lower()+"\t0")
         archivojugadores.close()
-        return 1       
+        return 1
+    
+    def getjugadoresypbd(self):
+        conexion=BD()
+        return conexion.getjugadoresyp()
+
+    def sumarpunto(self,jugador):
+        jugadoryp=[]
+        var=""
+        pos=self.getnombresjugadores().index(jugador)
+        puntos=int(self.getpuntajejugadores()[pos])
+        puntos+=1
+        jugadores = [line.rstrip() for line in open("jugadores.txt")]
+        for jug in range(len(jugadores)):
+            jugadoryp.append(jugadores[jug].split())
+        jugadoryp[pos][0]=jugador
+        jugadoryp[pos][1]=puntos
+        for linea in range(len(jugadoryp)):
+            print("\n"+jugadoryp[linea][0]+"\t"+str(jugadoryp[linea][1]))
+            var+="\n"+jugadoryp[linea][0]+"\t"+str(jugadoryp[linea][1])
+        archivojugadores = open("jugadores.txt", "r+")
+        archivojugadores.readlines()
+        archivojugadores.write(var)
+        archivojugadores.close()
+        return 1      
 
 Ju=Jugador()
-Ju.getjugadoresyp()
+Ju.sumarpunto("bianca")
