@@ -6,17 +6,65 @@ import os
 class Menu:
 
 
-    def crearMenu(self):
-        p = Palabra()
-        conexion = p.llenarbasedatos()
+    def crearMenu(self, conexion):
+        j=Jugador()
+        jugadores=[]
+        jugador=""
+        puntos=0
         opc = "a"   
+        print("¡Identifícate! ¿Cuál es tu nombre de jugador?")
+        if conexion==1:
+            for row in j.getnombresjugadoresbd():
+                print(row)
+            jugador=input("\n")
+            existe=str(j.verifyjugadorbd(jugador))
+            if existe=="0":
+                os.system('cls')
+                input("El nombre de jugador que escribió no existe, se agregará como un jugador nuevo.\nPresione Enter para continuar")
+                if j.agregarjugadorbd(jugador)==0:
+                    os.system('cls')
+                    print("Ocurrió un error inesperado, inténtalo nuévamente.")
+                else:
+                    os.system('cls')
+                    existe=str(j.verifyjugadorbd(jugador))
+                    jugador=existe
+                    puntos=j.verifypuntosjugadorbd(jugador)
+                    input("¡Estás jugando como "+jugador+"! tienes {} puntos\nPresiona Enter para continuar".format(puntos))
+            else:
+                os.system('cls')
+                jugador=existe
+                puntos=j.verifypuntosjugadorbd(jugador)
+                input("¡Estás jugando como "+jugador+"! tienes {} puntos\nPresiona Enter para continuar".format(puntos))
+        else:
+            for row in j.getnombresjugadores():
+                print(row)
+            jugador=input("\n")
+            existe=str(j.verifyjugador(jugador))
+            if existe=="0":
+                os.system('cls')
+                input("El nombre de jugador que escribió no existe, se agregará como un jugador nuevo.\nPresione Enter para continuar")
+                if j.agregarjugador(jugador)!=1:
+                    os.system('cls')
+                    print("Ocurrió un error inesperado, inténtalo nuévamente.")
+                else:
+                    os.system('cls')
+                    existe=str(j.verifyjugador(jugador))
+                    jugador=existe
+                    puntos=j.verifypuntosjugador(jugador)
+                    input("¡Estás jugando como "+jugador+"! tienes {} puntos\nPresiona Enter para continuar".format(puntos))
+            else:
+                os.system('cls')
+                jugador=existe
+                puntos=j.verifypuntosjugador(jugador)
+                input("¡Estás jugando como "+jugador+"! tienes {} puntos\nPresiona Enter para continuar".format(puntos))
         while opc != "s":
             if conexion == 1:
                                                                 # CON CONEXIÓN
 # ==================================================================================================================================================
                 os.system('cls')
                 print("¡Estás jugando con conexión!")
-                opc = input("Bienvenido ¿Que deseas hacer? \n <J> = Jugar || <A> = Añadir Palabra || <R> Reiniciar Palabras || <S> Salir ")
+                os.system('cls')
+                opc = input("Bienvenido "+jugador+" ¿Que deseas hacer? \n <J> = Jugar || <A> = Añadir Palabra || <R> Reiniciar Palabras || <S> Salir || <V> Ver Jugadores\n")
                 if opc.lower() == "a":
                     p = Palabra()
                     opcion='s'
@@ -50,11 +98,8 @@ class Menu:
                                 otra=input("¿Deseas agregar otra palabra? <S> Si || <N> No\n").lower()
                     else:
                         palabratyd=p.separarPalabra(success)
-                        #p.compararPalabra(palabratyd[1],palabratyd[0])
                         palabraTapada = palabratyd[1]
                         palabraDestapada = palabratyd[0]
-
-
 
                         palabra = ''.join(palabraDestapada)
                         intentos = 5
@@ -105,6 +150,7 @@ class Menu:
                                         ganador = False
                         if ganador:
                             os.system('cls')
+                            j.sumarpunto(jugador)
                             input("Adivinaste la palabra. Ganaste!\nPresiona enter para continuar")
                         else:
                             print(dibujo.dibujarPierna2())
@@ -136,8 +182,9 @@ class Menu:
                                                             # SIN CONEXION
 # ==================================================================================================================================================
             else:
+                os.system('cls')
                 print("Estás jugando sin conexión.")
-                opc = input("Bienvenido ¿Que deseas hacer? \n <J> = Jugar || <A> = Añadir Palabra || <R> Reiniciar Palabras || <S> Salir ")
+                opc = input("Bienvenido"+jugador+"¿Que deseas hacer? \n <J> = Jugar || <A> = Añadir Palabra || <R> Reiniciar Palabras || <S> Salir || <V> Ver Jugadores\n ")
                 if opc.lower() == "a":
                     p = Palabra()
                     otra = "s"
@@ -173,8 +220,6 @@ class Menu:
                         # p.compararPalabra(palabratyd[1],palabratyd[0])
                         palabraTapada = palabratyd[1]
                         palabraDestapada = palabratyd[0]
-
-
 
                         palabra = ''.join(palabraDestapada)
                         intentos = 5
@@ -250,10 +295,14 @@ class Menu:
                             otra = input("¿Deseas agregar otra palabra? <S> Si || <N> No\n").lower()
 
                     print("Lista de palabras reiniciada.")
+                elif opc.lower()=="v":
+                    os.system('cls')
+                    print(j.getjugadoresyp())
+                    input("Presiona Enter para regresar.")
 
                 else:
                     print("Tecla incorrecta. Vuelve a intentarlo.")
 
 
 menu = Menu()
-menu.crearMenu()
+menu.crearMenu(0)
