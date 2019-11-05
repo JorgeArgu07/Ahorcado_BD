@@ -78,6 +78,7 @@ class Menu:
                                                             # SIN CONEXION
 # ==================================================================================================================================================
             else:
+                os.system('cls')
                 print("Estás jugando sin conexión.")
                 opc = input("Bienvenido ¿Que deseas hacer? \n <J> = Jugar || <A> = Añadir Palabra || <R> Reiniciar Palabras || <S> Salir ")
                 if opc.lower() == "a":

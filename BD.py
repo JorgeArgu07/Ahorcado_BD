@@ -24,15 +24,15 @@ class BD:
                 return success
     
     def getselect(self,query):
-        er=""
-        success=0
+        er = ""
+        success = 0
         try:
             conexion=mysql.connector.connect(host="localhost",user="root",passwd="", db="ahorcado_BD")
             cursor = conexion.cursor()
             cursor.execute(query)
             consulta = cursor.fetchall()
             cursor.close()
-            success=1
+            success = 1
         except Error as error:
             success=0
             er = error
