@@ -1,10 +1,9 @@
-telefono
-pantalla
-programacion
-zapato
-computadora
-maletin
-trabajo
-electricidad
 esclavitud
+electricidad
+pantalla
 escritorio
+zapato
+programacion
+telefono
+maletin
+computadora

@@ -72,7 +72,7 @@ class Menu:
                             letraIngresada.lower()
 
                             if letraIngresada == palabra:
-                                palabraTapada = palabra
+                                palabraTapada = palabraDestapada
                             else:
                                 posiciones = [i for i, l in enumerate(palabraDestapada) if l == letraIngresada]
                                 if len(posiciones) > 0:
@@ -192,7 +192,7 @@ class Menu:
                             letraIngresada.lower()
 
                             if letraIngresada == palabra:
-                                palabraTapada = palabra
+                                palabraTapada = palabraDestapada
                             else:
                                 posiciones = [i for i, l in enumerate(palabraDestapada) if l == letraIngresada]
                                 if len(posiciones) > 0:
