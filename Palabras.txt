@@ -1,7 +1,6 @@
-trabajo
-zapato
-electricidad
-computadora
-pantalla
 telefono
 maletin
+electricidad
+zapato
+computadora
+pantalla
