@@ -1,6 +1,7 @@
 from Palabra import Palabra
 from Jugador import Jugador
 from BD import BD
+from Dibujo import Dibujo
 import os
 class Menu:
 
@@ -49,7 +50,64 @@ class Menu:
                                 otra=input("¿Deseas agregar otra palabra? <S> Si || <N> No\n").lower()
                     else:
                         palabratyd=p.separarPalabra(success)
-                        p.compararPalabra(palabratyd[1],palabratyd[0])
+                        #p.compararPalabra(palabratyd[1],palabratyd[0])
+                        palabraTapada = palabratyd[1]
+                        palabraDestapada = palabratyd[0]
+
+
+
+                        palabra = ''.join(palabraDestapada)
+                        intentos = 5
+                        ganador = True
+                        dibujo = Dibujo()
+                        actual = dibujo.dibujarHorca()
+
+                        while palabraTapada != palabraDestapada:
+
+                            print(actual)
+                            print(''.join(palabraDestapada))
+                            print(''.join(palabraTapada))
+                            print("Tienes " + str(intentos) + " intentos")
+                            letraIngresada = input("Escribe una letra o una palabra\n")
+                            letraIngresada.lower()
+
+                            if letraIngresada == palabra:
+                                palabraTapada = palabra
+                            else:
+                                posiciones = [i for i, l in enumerate(palabraDestapada) if l == letraIngresada]
+                                if len(posiciones) > 0:
+                                    # enumerate(palabraTapada)
+                                    for n in posiciones:
+                                        palabraTapada[n] = letraIngresada
+                                    os.system('cls')
+                                    print("Acertaste!")
+                                else:
+                                    intentos -= 1
+                                    if intentos == 4:
+                                        os.system('cls')
+                                        actual = dibujo.dibujarCabeza()
+                                        # print(palabraTapada)
+                                    elif intentos == 3:
+                                        os.system('cls')
+                                        actual = dibujo.dibujarBrazo1()
+                                        # print(palabraTapada)
+                                    elif intentos == 2:
+                                        os.system('cls')
+                                        actual = dibujo.dibujarBrazo2()
+                                        # print(palabraTapada)
+                                    elif intentos == 1:
+                                        os.system('cls')
+                                        actual = dibujo.dibujarPierna1()
+                                        # print(palabraTapada)
+                                    elif intentos == 0:
+                                        os.system('cls')
+                                        palabraTapada = palabraDestapada
+                                        ganador = False
+                        if ganador:
+                            os.system('cls')
+                            input("Adivinaste la palabra. Ganaste!\nPresiona enter para continuar")
+                        else:
+                            print(dibujo.dibujarPierna2())
 
                 elif opc.lower() == "s":
                     print("Hasta pronto.")
@@ -112,8 +170,65 @@ class Menu:
                                     print("Ocurrió un error inténtelo de nuevo.")
                                 otra=input("¿Deseas agregar otra palabra? <S> Si || <N> No\n").lower()
                     else:
-                        palabratyd=p.separarPalabra(success)
-                        p.compararPalabra(palabratyd[1],palabratyd[0])
+                        palabratyd = p.separarPalabra(success)
+                        # p.compararPalabra(palabratyd[1],palabratyd[0])
+                        palabraTapada = palabratyd[1]
+                        palabraDestapada = palabratyd[0]
+
+
+
+                        palabra = ''.join(palabraDestapada)
+                        intentos = 5
+                        ganador = True
+                        dibujo = Dibujo()
+                        actual = dibujo.dibujarHorca()
+
+                        while palabraTapada != palabraDestapada:
+
+                            print(actual)
+                            print(''.join(palabraDestapada))
+                            print(''.join(palabraTapada))
+                            print("Tienes " + str(intentos) + " intentos")
+                            letraIngresada = input("Escribe una letra o una palabra\n")
+                            letraIngresada.lower()
+
+                            if letraIngresada == palabra:
+                                palabraTapada = palabra
+                            else:
+                                posiciones = [i for i, l in enumerate(palabraDestapada) if l == letraIngresada]
+                                if len(posiciones) > 0:
+                                    # enumerate(palabraTapada)
+                                    for p in posiciones:
+                                        palabraTapada[p] = letraIngresada
+                                    os.system('cls')
+                                    print("Acertaste!")
+                                else:
+                                    intentos -= 1
+                                    if intentos == 4:
+                                        os.system('cls')
+                                        actual = dibujo.dibujarCabeza()
+                                        # print(palabraTapada)
+                                    elif intentos == 3:
+                                        os.system('cls')
+                                        actual = dibujo.dibujarBrazo1()
+                                        # print(palabraTapada)
+                                    elif intentos == 2:
+                                        os.system('cls')
+                                        actual = dibujo.dibujarBrazo2()
+                                        # print(palabraTapada)
+                                    elif intentos == 1:
+                                        os.system('cls')
+                                        actual = dibujo.dibujarPierna1()
+                                        # print(palabraTapada)
+                                    elif intentos == 0:
+                                        os.system('cls')
+                                        palabraTapada = palabraDestapada
+                                        ganador = False
+                        if ganador:
+                            os.system('cls')
+                            input("Adivinaste la palabra. Ganaste!\nPresiona enter para continuar")
+                        else:
+                            print(dibujo.dibujarPierna2())
 
                 elif opc.lower() == "s":
                     print("Hasta pronto.")

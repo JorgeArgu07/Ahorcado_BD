@@ -1,78 +1,87 @@
 class Dibujo:
 	def dibujarHorca(self):
-		print("      +------------+  ")
-		print("      |            |  ")
-		print("      |            |  ")
-		print("                   |  ")
-		print("                   |  ")
-		print("                   |  ")
-		print("                   |  ")
-		print("                   |  ")
-		print("                   |  ")
-		print("                  / \ ")
-	
+		var = "      +------------+  \n" + \
+			  "      |            |  \n" + \
+			  "      |            |  \n" + \
+			  "                   |  \n" + \
+			  "                   |  \n" + \
+			  "                   |  \n" + \
+			  "                   |  \n" + \
+			  "                   |  \n" + \
+			  "                   |  \n" + \
+			  "                  / \ "
+
+		return var
+
+
 	def dibujarCabeza(self):
-		print("      +------------+  ")
-		print("      |            |  ")
-		print("      |            |  ")
-		print("      ☺            |  ")
-		print("      |            |  ")
-		print("                   |  ")
-		print("                   |  ")
-		print("                   |  ")
-		print("                   |  ")
-		print("                  / \ ")
-		print("Fallaste. Vuelve a intentar.")
+		var = "      +------------+  \n" + \
+			  "      |            |  \n" + \
+			  "      |            |  \n" + \
+			  "      ☺            |  \n" + \
+			  "      |            |  \n" + \
+			  "                   |  \n" + \
+			  "                   |  \n" + \
+			  "                   |  \n" + \
+			  "                   |  \n" + \
+			  "                  / \ \n" + \
+			  "Fallaste. Vuelve a intentar."
+		return var
+
+
 		
 	def dibujarBrazo1(self):
-		print("      +------------+  ")
-		print("      |            |  ")
-		print("      |            |  ")
-		print("      ☺            |  ")
-		print("     /|            |  ")
-		print("                   |  ")
-		print("                   |  ")
-		print("                   |  ")
-		print("                   |  ")
-		print("                  / \ ")
-		print("Fallaste. Vuelve a intentar.")
+		var = "      +------------+  \n" + \
+			  "      |            |  \n" + \
+			  "      |            |  \n" + \
+			  "      ☺            |  \n" + \
+			  "     /|            |  \n" + \
+			  "                   |  \n" + \
+			  "                   |  \n" + \
+			  "                   |  \n" + \
+			  "                   |  \n" + \
+			  "                  / \ \n" + \
+			  "Fallaste. Vuelve a intentar."
+		return var
 		
 	def dibujarBrazo2(self):
-		print("      +------------+  ")
-		print("      |            |  ")
-		print("      |            |  ")
-		print("      ☺7           |  ")
-		print("     /|            |  ")
-		print("                   |  ")
-		print("                   | ")
-		print("                   |  ")
-		print("                   |  ")
-		print("                  / \ ")
-		print("Fallaste. Vuelve a intentar.")
+		var = "      +------------+  \n" + \
+			  "      |            |  \n" + \
+			  "      |            |  \n" + \
+			  "      ☺ 7          |  \n" + \
+			  "     /|            |  \n" + \
+			  "                   |  \n" + \
+			  "                   |  \n" + \
+			  "                   |  \n" + \
+			  "                   |  \n" + \
+			  "                  / \ \n" + \
+			  "Fallaste. Vuelve a intentar."
+		return var
 		
 	def dibujarPierna1(self):
-		print("      +------------+  ")
-		print("      |            |  ")
-		print("      |            |  ")
-		print("      ☺7           |  ")
-		print("     /|            |  ")
-		print("     /             |  ")
-		print("                   |  ")
-		print("                   |  ")
-		print("                   |  ")
-		print("                  / \ ")
-		print("Fallaste. Vuelve a intentar.")
+		var = "      +------------+  \n" + \
+			  "      |            |  \n" + \
+			  "      |            |  \n" + \
+			  "      ☺ 7          |  \n" + \
+			  "     /|            |  \n" + \
+			  "     /             |  \n" + \
+			  "                   |  \n" + \
+			  "                   |  \n" + \
+			  "                   |  \n" + \
+			  "                  / \ \n" + \
+			  "Fallaste. Vuelve a intentar."
+		return var
 		
 	def dibujarPierna2(self):
-		print("      +------------+  ")
-		print("      |            |  ")
-		print("      |            |  ")
-		print("      ☺7           |  ")
-		print("     /|            |  ")
-		print("     / \           |  ")
-		print("                   |  ")
-		print("                   |  ")
-		print("                   |  ")
-		print("                  / \ ")
-		print("Se acabaron tus intentos. Perdiste.")
-		
+		var = "      +------------+  \n" + \
+			  "      |            |  \n" + \
+			  "      |            |  \n" + \
+			  "      ☺ 7          |  \n" + \
+			  "     /|            |  \n" + \
+			  "     / \           |  \n" + \
+			  "                   |  \n" + \
+			  "                   |  \n" + \
+			  "                   |  \n" + \
+			  "                  / \ \n" + \
+			  "Se acabaron tus intentos. Perdiste."
+		return var
