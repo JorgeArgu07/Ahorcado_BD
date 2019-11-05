@@ -313,5 +313,5 @@ class Menu:
                     print("Tecla incorrecta. Vuelve a intentarlo.")
 
 
-menu = Menu()
-menu.crearMenu(1)
+""" menu = Menu()
+menu.crearMenu(1) """
