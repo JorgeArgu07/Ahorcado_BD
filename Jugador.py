@@ -70,7 +70,6 @@ class Jugador:
             jugadoryp.append(jugadores[jugador].split())
         for jugador in range(len(jugadoryp)):
             var+=jugadoryp[jugador][0]+"\t"+jugadoryp[jugador][1]+"\n"
-        print(jugadoryp[0])
         return var
 
     def agregarjugador(self, jugador):
@@ -96,13 +95,15 @@ class Jugador:
         jugadoryp[pos][0]=jugador
         jugadoryp[pos][1]=puntos
         for linea in range(len(jugadoryp)):
-            print("\n"+jugadoryp[linea][0]+"\t"+str(jugadoryp[linea][1]))
-            var+="\n"+jugadoryp[linea][0]+"\t"+str(jugadoryp[linea][1])
-        archivojugadores = open("jugadores.txt", "r+")
-        archivojugadores.readlines()
-        archivojugadores.write(var)
+            if linea==0:
+                var+=jugadoryp[linea][0]+"\t"+str(jugadoryp[linea][1])
+            else:
+                var+="\n"+jugadoryp[linea][0]+"\t"+str(jugadoryp[linea][1])
+        archivojugadores = open("jugadores.txt", "w")
+        for linea in var:
+            archivojugadores.write(linea)
         archivojugadores.close()
         return 1      
-""" 
-Ju=Jugador()
-Ju.sumarpunto("bianca") """
+
+""" Ju=Jugador()
+Ju.sumarpunto("jorge") """

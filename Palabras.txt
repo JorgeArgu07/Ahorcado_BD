@@ -1,6 +1,2 @@
-telefono
-maletin
-electricidad
-zapato
 computadora
-pantalla
+zapato
