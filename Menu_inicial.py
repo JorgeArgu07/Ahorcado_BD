@@ -9,6 +9,7 @@ class MenuInicial:
     def crearmenu(self):
 
         j=Jugador()
+        conexion2=j.llenarjugadoresbd()
         jugadores=[]
         jugador=""
         puntos=0
@@ -17,7 +18,7 @@ class MenuInicial:
         opc="a"
 
         print("¡Identifícate! ¿Cuál es tu nombre de jugador?")
-        if conexion==1:
+        if conexion==1 and conexion2==1:
             for row in j.getnombresjugadoresbd():
                 print(row)
             jugador=input("\n")
@@ -61,11 +62,10 @@ class MenuInicial:
                 jugador=existe
                 puntos=j.verifypuntosjugador(jugador)
                 input("¡Estás jugando como "+jugador+"! tienes {} puntos\nPresiona Enter para continuar".format(puntos))
-
+                
         while opc!="s":
             os.system('cls')   
             opc = input("Bienvenido ¿Qué quieres jugar? \n <G> Gato || <A> Ahorcado || <S> Salir\n").lower()
-
             if opc=="g":
                 gato=Main()
                 gato.menu()

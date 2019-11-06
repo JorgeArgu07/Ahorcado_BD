@@ -33,6 +33,7 @@ class Palabra:
             if len(palabras) == 0:
                 return 0
             conexion.reiniciarusadas()
+            self.llenarbasedatos()
             palabras2 = open("Palabras.txt", "w")
             nuevaLista = "\n".join(str(x) for x in palabras)
             palabras2.write(nuevaLista)

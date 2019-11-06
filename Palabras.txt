@@ -1,2 +1,9 @@
-computadora
+programacion
 zapato
+audifonos
+computadora
+trabajo
+pantalla
+escritorio
+maletin
+telefono

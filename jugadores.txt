@@ -1,3 +1,4 @@
-eduardo	9
-jorge	8
-bianca	8
+eduardo	11
+jorge	10
+bianca	11
+paco	10

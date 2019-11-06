@@ -120,19 +120,19 @@ class BD:
         success=self.execquery(query)
         return success
 
+    def llenarjugaodres(self, jugadores):
+        success=0
+        eliminarbd = "truncate table ahorcado_bd.jugadores;"
+        success=self.execquery(eliminarbd)
+        for jugador in range(len(jugadores)):
+            success=self.execquery(query="insert into jugadores (idjugador, puntaje) values('"+jugadores[jugador][0]+"','"+jugadores[jugador][1]+"')")
+        return success
+
     def getjugadoresyp(self):
         query="select * from jugadores"
         jugadores=[]
-        var=""
         if len(self.getselect(query))==0:
             return 0
         else:
             jugadores = list(self.getselect(query))
-
-            for row in range(len(jugadores)):
-                var+=jugadores[row][0]+"\t"+str(jugadores[row][1])+"\n"
-        return var
-
-
-""" base=BD()
-base.getjugadoresyp() """
+        return jugadores

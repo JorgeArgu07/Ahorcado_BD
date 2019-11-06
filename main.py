@@ -15,7 +15,6 @@ class Menu:
 # ==================================================================================================================================================
                 os.system('cls')
                 print("¡Estás jugando con conexión!")
-                os.system('cls')
                 opc = input("Bienvenido "+jugador+" ¿Qué deseas hacer? \n <J> = Jugar || <A> = Añadir Palabra || <R> Reiniciar Palabras || <S> Salir || <V> Ver Jugadores\n")
                 if opc.lower() == "a":
                     p = Palabra()
@@ -131,8 +130,11 @@ class Menu:
                     input("Lista de palabras reiniciada. \nPresiona enter para continuar")
                 elif opc.lower()=="v":
                     os.system('cls')
-                    print("Jugador\t|Puntos\n")
-                    print(j.getjugadoresypbd())
+                    print("|Jugador|\t|Puntos|\n")
+                    jugadoresyp=[]
+                    jugadoresyp=list(j.getjugadoresypbd())
+                    for row in range(len(jugadoresyp)):
+                        print(jugadoresyp[row][0]+"\t\t"+str(jugadoresyp[row][1])+"\n")
                     input("Presiona Enter para regresar.")
                 else:
                     print("Tecla incorrecta. Vuelve a intentarlo.")
@@ -258,13 +260,15 @@ class Menu:
                     print("Lista de palabras reiniciada.")
                 elif opc.lower()=="v":
                     os.system('cls')
-                    print("Jugador\t|Puntos\n")
-                    print(j.getjugadoresyp())
+                    print("|Jugador|\t|Puntos|\n")
+                    jugadoresyp=[]
+                    jugadoresyp=list(j.getjugadoresyp())
+                    for row in range(len(jugadoresyp)):
+                        print(jugadoresyp[row][0]+"\t\t"+str(jugadoresyp[row][1])+"\n")
                     input("Presiona Enter para regresar.")
 
                 else:
                     print("Tecla incorrecta. Vuelve a intentarlo.")
 
-
-""" menu = Menu()
-menu.crearMenu(1) """
+""" ma=Menu()
+ma.crearMenu(0,"eduardo") """
