@@ -1,4 +1,4 @@
-eduardo	11
+eduardo	15
 jorge	10
 bianca	11
 paco	10

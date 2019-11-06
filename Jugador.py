@@ -110,7 +110,7 @@ class Jugador:
         jugadores = [line.rstrip() for line in open("jugadores.txt")]
         for jugador in range(len(jugadores)):
             jugadoryp.append(jugadores[jugador].split())
-        return conexion.llenarjugaodres(jugadoryp)
+        return conexion.llenarjugadores(jugadoryp)
 
 
 """ ju=Jugador()

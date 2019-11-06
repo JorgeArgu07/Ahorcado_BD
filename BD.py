@@ -120,7 +120,7 @@ class BD:
         success=self.execquery(query)
         return success
 
-    def llenarjugaodres(self, jugadores):
+    def llenarjugadores(self, jugadores):
         success=0
         eliminarbd = "truncate table ahorcado_bd.jugadores;"
         success=self.execquery(eliminarbd)

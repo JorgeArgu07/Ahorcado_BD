@@ -1,9 +1,5 @@
-programacion
-zapato
-audifonos
-computadora
-trabajo
-pantalla
-escritorio
 maletin
+trabajo
+escritorio
 telefono
+computadora

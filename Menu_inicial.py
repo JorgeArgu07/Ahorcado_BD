@@ -19,6 +19,9 @@ class MenuInicial:
 
         print("¡Identifícate! ¿Cuál es tu nombre de jugador?")
         if conexion==1 and conexion2==1:
+                                                                     # CON CONEXION
+# =============================================================================================================================================================================
+            print("Estás jugando con conexión.")
             for row in j.getnombresjugadoresbd():
                 print(row)
             jugador=input("\n")
@@ -41,6 +44,9 @@ class MenuInicial:
                 puntos=j.verifypuntosjugadorbd(jugador)
                 input("¡Estás jugando como "+jugador+"! tienes {} puntos\nPresiona Enter para continuar".format(puntos))
         else:
+                                                                        # SIN CONEXION
+# =============================================================================================================================================================================
+            print("Estás jugando sin conexión.")
             for row in j.getnombresjugadores():
                 print(row)
             jugador=input("\n")
@@ -62,7 +68,7 @@ class MenuInicial:
                 jugador=existe
                 puntos=j.verifypuntosjugador(jugador)
                 input("¡Estás jugando como "+jugador+"! tienes {} puntos\nPresiona Enter para continuar".format(puntos))
-                
+
         while opc!="s":
             os.system('cls')   
             opc = input("Bienvenido ¿Qué quieres jugar? \n <G> Gato || <A> Ahorcado || <S> Salir\n").lower()
