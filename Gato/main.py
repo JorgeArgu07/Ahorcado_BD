@@ -1,5 +1,5 @@
 from Gato.Tablero import Tablero
-from Jugador import Jugador
+from Gato.Jugador import Jugador
 from Gato import Gato
 import os
 
