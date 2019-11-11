@@ -43,9 +43,9 @@ class MenuInicial:
                 jugador=existe
                 puntos=j.verifypuntosjugadorbd(jugador)
                 input("¡Estás jugando como "+jugador+"! tienes {} puntos\nPresiona Enter para continuar".format(puntos))
-        else:
-                                                                        # SIN CONEXION
+                                                                     # SIN CONEXION
 # =============================================================================================================================================================================
+        else:
             print("Estás jugando sin conexión.")
             for row in j.getnombresjugadores():
                 print(row)
@@ -81,7 +81,7 @@ class MenuInicial:
             elif opc=="s":
                 print("Hasta pronto.")
             else:
-                print("Tecla incorrecta, intenta de nuevo.")
+                input("Tecla incorrecta, inténtalo de nuevo.\nPresiona Enter para continuar.")
 
 menu=MenuInicial()
 menu.crearmenu()

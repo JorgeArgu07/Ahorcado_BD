@@ -1,5 +1,6 @@
-maletin
-trabajo
-escritorio
+pantalla
+audifonos
+zapato
 telefono
-computadora
+maletin
+electricidad

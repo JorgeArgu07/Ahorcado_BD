@@ -15,7 +15,7 @@ class Menu:
 # ==================================================================================================================================================
                 os.system('cls')
                 print("¡Estás jugando con conexión!")
-                opc = input("Bienvenido "+jugador+" ¿Qué deseas hacer? \n <J> = Jugar || <A> = Añadir Palabra || <R> Reiniciar Palabras || <S> Salir || <V> Ver Jugadores\n")
+                opc = input("Bienvenido "+jugador+" ¿Qué deseas hacer? \n <J> Jugar || <A> Añadir Palabra || <R> Reiniciar Palabras || <S> Salir || <V> Ver Jugadores\n")
                 if opc.lower() == "a":
                     p = Palabra()
                     opcion='s'
@@ -105,7 +105,9 @@ class Menu:
                             j.sumarpuntobd(jugador)
                             input("Adivinaste la palabra. Ganaste!\nPresiona enter para continuar")
                         else:
+                            os.system('cls')
                             print(dibujo.dibujarPierna2())
+                            input("Presiona Enter para continuar.")
 
                 elif opc.lower() == "s":
                     print("Hasta pronto.")
@@ -137,14 +139,14 @@ class Menu:
                         print(jugadoresyp[row][0]+"\t\t"+str(jugadoresyp[row][1])+"\n")
                     input("Presiona Enter para regresar.")
                 else:
-                    print("Tecla incorrecta. Vuelve a intentarlo.")
+                    input("Tecla incorrecta. Vuelve a intentarlo.\nPresiona Enter para continuar.")
 
                                                             # SIN CONEXION
 # ==================================================================================================================================================
             else:
                 os.system('cls')
                 print("Estás jugando sin conexión.")
-                opc = input("Bienvenido "+jugador+" ¿Qué deseas hacer? \n <J> = Jugar || <A> = Añadir Palabra || <R> Reiniciar Palabras || <S> Salir || <V> Ver Jugadores\n ")
+                opc = input("Bienvenido "+jugador+" ¿Qué deseas hacer? \n <J> Jugar || <A> Añadir Palabra || <R> Reiniciar Palabras || <S> Salir || <V> Ver Jugadores\n ")
                 if opc.lower() == "a":
                     p = Palabra()
                     otra = "s"
@@ -234,7 +236,9 @@ class Menu:
                             j.sumarpunto(jugador)
                             input("Adivinaste la palabra. Ganaste!\nPresiona enter para continuar")
                         else:
+                            os.system('cls')
                             print(dibujo.dibujarPierna2())
+                            input("Presiona Enter para continuar.")
 
                 elif opc.lower() == "s":
                     print("Hasta pronto.")
@@ -270,5 +274,3 @@ class Menu:
                 else:
                     print("Tecla incorrecta. Vuelve a intentarlo.")
 
-""" ma=Menu()
-ma.crearMenu(0,"eduardo") """
