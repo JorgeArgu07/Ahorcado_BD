@@ -6,65 +6,16 @@ import os
 class Menu:
 
 
-    def crearMenu(self, conexion):
+    def crearMenu(self, conexion, jugador):
         j=Jugador()
-        jugadores=[]
-        jugador=""
-        puntos=0
-        opc = "a"   
-        print("¡Identifícate! ¿Cuál es tu nombre de jugador?")
-        if conexion==1:
-            for row in j.getnombresjugadoresbd():
-                print(row)
-            jugador=input("\n")
-            existe=str(j.verifyjugadorbd(jugador))
-            if existe=="0":
-                os.system('cls')
-                input("El nombre de jugador que escribió no existe, se agregará como un jugador nuevo.\nPresione Enter para continuar")
-                if j.agregarjugadorbd(jugador)==0:
-                    os.system('cls')
-                    print("Ocurrió un error inesperado, inténtalo nuévamente.")
-                else:
-                    os.system('cls')
-                    existe=str(j.verifyjugadorbd(jugador))
-                    jugador=existe
-                    puntos=j.verifypuntosjugadorbd(jugador)
-                    input("¡Estás jugando como "+jugador+"! tienes {} puntos\nPresiona Enter para continuar".format(puntos))
-            else:
-                os.system('cls')
-                jugador=existe
-                puntos=j.verifypuntosjugadorbd(jugador)
-                input("¡Estás jugando como "+jugador+"! tienes {} puntos\nPresiona Enter para continuar".format(puntos))
-        else:
-            for row in j.getnombresjugadores():
-                print(row)
-            jugador=input("\n")
-            existe=str(j.verifyjugador(jugador))
-            if existe=="0":
-                os.system('cls')
-                input("El nombre de jugador que escribió no existe, se agregará como un jugador nuevo.\nPresione Enter para continuar")
-                if j.agregarjugador(jugador)!=1:
-                    os.system('cls')
-                    print("Ocurrió un error inesperado, inténtalo nuévamente.")
-                else:
-                    os.system('cls')
-                    existe=str(j.verifyjugador(jugador))
-                    jugador=existe
-                    puntos=j.verifypuntosjugador(jugador)
-                    input("¡Estás jugando como "+jugador+"! tienes {} puntos\nPresiona Enter para continuar".format(puntos))
-            else:
-                os.system('cls')
-                jugador=existe
-                puntos=j.verifypuntosjugador(jugador)
-                input("¡Estás jugando como "+jugador+"! tienes {} puntos\nPresiona Enter para continuar".format(puntos))
+        opc = "a"
         while opc != "s":
             if conexion == 1:
                                                                 # CON CONEXIÓN
 # ==================================================================================================================================================
                 os.system('cls')
                 print("¡Estás jugando con conexión!")
-                os.system('cls')
-                opc = input("Bienvenido "+jugador+" ¿Que deseas hacer? \n <J> = Jugar || <A> = Añadir Palabra || <R> Reiniciar Palabras || <S> Salir || <V> Ver Jugadores\n")
+                opc = input("Bienvenido "+jugador+" ¿Qué deseas hacer? \n <J> Jugar || <A> Añadir Palabra || <R> Reiniciar Palabras || <S> Salir || <V> Ver Jugadores\n")
                 if opc.lower() == "a":
                     p = Palabra()
                     opcion='s'
@@ -154,7 +105,9 @@ class Menu:
                             j.sumarpuntobd(jugador)
                             input("Adivinaste la palabra. Ganaste!\nPresiona enter para continuar")
                         else:
+                            os.system('cls')
                             print(dibujo.dibujarPierna2())
+                            input("Presiona Enter para continuar.")
 
                 elif opc.lower() == "s":
                     print("Hasta pronto.")
@@ -179,18 +132,21 @@ class Menu:
                     input("Lista de palabras reiniciada. \nPresiona enter para continuar")
                 elif opc.lower()=="v":
                     os.system('cls')
-                    print("Jugador\t|Puntos\n")
-                    print(j.getjugadoresypbd())
+                    print("|Jugador|\t|Puntos|\n")
+                    jugadoresyp=[]
+                    jugadoresyp=list(j.getjugadoresypbd())
+                    for row in range(len(jugadoresyp)):
+                        print(jugadoresyp[row][0]+"\t\t"+str(jugadoresyp[row][1])+"\n")
                     input("Presiona Enter para regresar.")
                 else:
-                    print("Tecla incorrecta. Vuelve a intentarlo.")
+                    input("Tecla incorrecta. Vuelve a intentarlo.\nPresiona Enter para continuar.")
 
                                                             # SIN CONEXION
 # ==================================================================================================================================================
             else:
                 os.system('cls')
                 print("Estás jugando sin conexión.")
-                opc = input("Bienvenido"+jugador+"¿Que deseas hacer? \n <J> = Jugar || <A> = Añadir Palabra || <R> Reiniciar Palabras || <S> Salir || <V> Ver Jugadores\n ")
+                opc = input("Bienvenido "+jugador+" ¿Qué deseas hacer? \n <J> Jugar || <A> Añadir Palabra || <R> Reiniciar Palabras || <S> Salir || <V> Ver Jugadores\n ")
                 if opc.lower() == "a":
                     p = Palabra()
                     otra = "s"
@@ -277,9 +233,12 @@ class Menu:
                                         ganador = False
                         if ganador:
                             os.system('cls')
+                            j.sumarpunto(jugador)
                             input("Adivinaste la palabra. Ganaste!\nPresiona enter para continuar")
                         else:
+                            os.system('cls')
                             print(dibujo.dibujarPierna2())
+                            input("Presiona Enter para continuar.")
 
                 elif opc.lower() == "s":
                     print("Hasta pronto.")
@@ -305,13 +264,13 @@ class Menu:
                     print("Lista de palabras reiniciada.")
                 elif opc.lower()=="v":
                     os.system('cls')
-                    print("Jugador\t|Puntos\n")
-                    print(j.getjugadoresyp())
+                    print("|Jugador|\t|Puntos|\n")
+                    jugadoresyp=[]
+                    jugadoresyp=list(j.getjugadoresyp())
+                    for row in range(len(jugadoresyp)):
+                        print(jugadoresyp[row][0]+"\t\t"+str(jugadoresyp[row][1])+"\n")
                     input("Presiona Enter para regresar.")
 
                 else:
                     print("Tecla incorrecta. Vuelve a intentarlo.")
 
-
-""" menu = Menu()
-menu.crearMenu(1) """

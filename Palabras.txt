@@ -1,6 +1,6 @@
+pantalla
+audifonos
+zapato
 telefono
 maletin
 electricidad
-zapato
-computadora
-pantalla
