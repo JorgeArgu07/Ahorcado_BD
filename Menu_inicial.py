@@ -69,6 +69,9 @@ class MenuInicial:
                 puntos=j.verifypuntosjugador(jugador)
                 input("¡Estás jugando como "+jugador+"! tienes {} puntos\nPresiona Enter para continuar".format(puntos))
 
+                                                                     # MENÚ
+# =============================================================================================================================================================================
+
         while opc!="s":
             os.system('cls')   
             opc = input("Bienvenido ¿Qué quieres jugar? \n <G> Gato || <A> Ahorcado || <S> Salir\n").lower()

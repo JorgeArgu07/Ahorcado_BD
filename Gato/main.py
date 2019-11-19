@@ -36,10 +36,7 @@ class Main:
                         ganador = 1
                         print(tablero.dibujarTablero())
                         print("Ganador!!")
-
-
                     turno = 2
-
                 else:
                     pos = input("Turno de " + j2.getNombre() + "\n")
                     tablero.setPosicion(pos, j2.getFicha())
@@ -53,10 +50,7 @@ class Main:
                         ganador = 1
                         print(tablero.dibujarTablero())
                         print("Ganador!!")
-
-
                     turno = 1
-
             reset = input("Deseas volver a jugar?(s/n)\n")
             reset.lower()
             if reset == "s":
