@@ -1,33 +1,59 @@
+import pygame,sys
+from pygame.locals import *
+import random
+from Jugador import Jugador
+from Button import Button
 class Gato:
+    def iniciar(self, tablero):
+        pygame.init()
+        display = pygame.display.set_mode((400, 300))
+        pygame.display.set_caption("Gato")
+        font = pygame.font.SysFont('Arial', 40)
+        txtEmpate = font.render("EMPATE!", 1, (255, 255, 255))
+        txtEmpate = font.render("GANADOR!", 1, (255, 255, 255))
+        imgGatito = pygame.image.load("src/gatito.png")
+        btnAceptar = Button((138, 183, 58), 135, 135, 100, 50, "Aceptar")
 
-	def Jugar(tablero, j1, j2, reset):
-		ganador = 0
 
-		while reset == "s":
-			while ganador == 0:
+        jnombre = ""
+        jugador = Jugador(jnombre, "X");
 
-				ganador = Gato.Turno(ganador, turno, tablero, j1, j2)
 
-			reset = input("Deseas volver a jugar?(s/n)\n")
-			reset.lower()
-			if reset == "s":
-				ganador = 0
 
-	def verificarGanador(tablero, j, turno):
-		pos = input("Turno de "+j.getNombre()+" ("+j.getFicha()+")\n")
-		tablero.setPosicion(pos, j.getFicha())
-				
-		if tablero.verificar(j.getFicha()):
-			ganador = 1
-			tab = tablero.dibujarTablero()+"\n Ganador!!"
-			tablero.resetTablero()
-		
-		return 0
-			
+        turno = True
+        running = True
+        ficha = "X"
+        while running:
+            display.fill((255, 255, 255))
+            display.blit(imgGatito, (50, 50))
+            tablero.dibujarTablero(display)
+            if tablero.verificarGanador(ficha):
+                pygame.draw.rect(display, (103, 58, 183), (60, 60, 250, 150), 0)
+                display.blit(txtEmpate, (115, 75))
+                btnAceptar.draw(display, 1)
 
-	def Turno(ganador, tablero, j1, j2):
-		if turno == 1:
-			Gato.verificarGanador(tablero, j1, turno)
+            if tablero.verificarEmpate():
+                pygame.draw.rect(display, (103, 58, 183), (60, 60, 250, 150), 0)
+                display.blit(txtEmpate, (115, 75))
+                btnAceptar.draw(display, 1)
 
-		else:
-			Gato.verficarGanador(tablero, j2, turno)
+            pygame.display.update()
+            for event in pygame.event.get():
+                pos = pygame.mouse.get_pos()
+                if event.type == QUIT:
+                    pygame.quit()
+                    sys.exit()
+
+                if turno:
+                    if event.type == pygame.MOUSEBUTTONDOWN:
+                        for boton in tablero.botones:
+                            if boton.isOver(pos):
+                                tablero.setPosicion(boton.text, ficha)
+                                turno = False
+
+                        if btnAceptar.isOver(pos):
+                            tablero.resetTablero()
+
+                else:
+                    tablero.setPosicion(tablero.botones[random.randint(0,8)].text, "O")
+                    turno = True

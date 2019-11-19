@@ -6,17 +6,10 @@ import os
 class Main:
 
 
-    def menu(self):
+    def menu(self, j1, j2):
         ganador = 0
         reset = "s"
         turno = 1
-
-        j1nombre = input("Ingresa el nombre del jugador 1 (O)\n")
-        j1 = Jugador(j1nombre, "X")
-
-        j2nombre = input("Ingresa el nombre del jugador 2 (X)\n")
-        j2 = Jugador(j2nombre, "O")
-
         tablero = Tablero()
 
         while reset == "s":
@@ -27,6 +20,7 @@ class Main:
                     pos = input("Turno de " + j1.getNombre() + "\n")
                     tablero.setPosicion(pos, j1.getFicha())
 
+
                     if tablero.verificarEmpate():
                         ganador = 1
                         print(tablero.dibujarTablero())
@@ -36,7 +30,6 @@ class Main:
                         ganador = 1
                         print(tablero.dibujarTablero())
                         print("Ganador!!")
-
 
                     turno = 2
 
