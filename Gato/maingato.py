@@ -1,11 +1,11 @@
-import pygame,sys
+import pygame, sys
 from pygame.locals import *
 from Button import Button
-from Tablero import Tablero
-import random
 from Gato import Gato
+from Tablero import Tablero
 
-class mainGato:
+
+class maingato:
     def initMenu(self):
 
         pygame.init()
@@ -18,8 +18,6 @@ class mainGato:
         btnJugar = Button(colorMagenta, 70, 100, 100, 50, "Jugar")
         btnSalir = Button(colorVerde, 70, 170, 100, 50, "Salir")
         imgGatito = pygame.image.load("src/gatito.png")
-
-
 
         enJuego = True
         while True:
@@ -45,14 +43,12 @@ class mainGato:
                         sys.exit()
                 elif event.type == pygame.MOUSEMOTION:
                     if btnJugar.isOver(pos):
-                        btnJugar.color = (72,40,128)
+                        btnJugar.color = (72, 40, 128)
                     elif btnSalir.isOver(pos):
                         btnSalir.color = (96, 128, 40)
                     else:
                         btnJugar.color = (103, 58, 183)
                         btnSalir.color = (138, 183, 58)
 
-
-
-mainGato = mainGato()
+mainGato = maingato()
 mainGato.initMenu()

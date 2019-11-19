@@ -1,8 +1,11 @@
-import pygame,sys
+import pygame, sys
 from pygame.locals import *
 import random
 from Jugador import Jugador
+from maingato import maingato
 from Button import Button
+
+
 class Gato:
     def iniciar(self, tablero):
         pygame.init()
@@ -14,19 +17,17 @@ class Gato:
         imgGatito = pygame.image.load("src/gatito.png")
         btnAceptar = Button((138, 183, 58), 135, 135, 100, 50, "Aceptar")
 
-
+        ficha = "X"
         jnombre = ""
-        jugador = Jugador(jnombre, "X");
-
-
-
+        jugador = Jugador(jnombre, ficha);
         turno = True
         running = True
-        ficha = "X"
+
         while running:
             display.fill((255, 255, 255))
             display.blit(imgGatito, (50, 50))
             tablero.dibujarTablero(display)
+
             if tablero.verificarGanador(ficha):
                 pygame.draw.rect(display, (103, 58, 183), (60, 60, 250, 150), 0)
                 display.blit(txtEmpate, (115, 75))
@@ -53,7 +54,12 @@ class Gato:
 
                         if btnAceptar.isOver(pos):
                             tablero.resetTablero()
-
+                            reset = maingato()
+                            reset.initMenu()
+                            pygame.quit()
+                            sys.exit()
                 else:
-                    tablero.setPosicion(tablero.botones[random.randint(0,8)].text, "O")
-                    turno = True
+                    tablero.setPosicion(tablero.botones[random.randint(0, 8)].text, "O")
+                    turno = False
+        else:
+            pass
